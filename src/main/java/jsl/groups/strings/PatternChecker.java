@@ -8,9 +8,6 @@ import java.util.Map;
  * @author github.com/Just-StyX
  */
 public class PatternChecker {
-    public static void main(String[] args) {
-        System.out.println(patternChecker("abba", "foo baz buz foo"));
-    }
 
     /**
      * Pattern checker boolean.
