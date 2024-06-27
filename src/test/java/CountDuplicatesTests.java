@@ -15,7 +15,9 @@ public class CountDuplicatesTests {
     public void checkDuplicate() {
         assertAll(
                 () -> assertThat(map).isEqualTo(duplicates.countDuplicates("statistics")),
-                () -> assertThat("staic").isEqualTo(duplicates.removeDuplicates("statistics"))
+                () -> assertThat("staic").isEqualTo(duplicates.removeDuplicates("statistics")),
+                () -> assertThat("staic is misp").isEqualTo(duplicates.removeDuplicatesOfCharactersInASentence("statistics iss mississippi")),
+                () -> assertThat('m').isEqualTo(duplicates.firstNonRepeatedCharacter("mississippi"))
         );
     }
 }
