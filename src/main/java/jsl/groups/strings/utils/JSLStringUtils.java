@@ -73,4 +73,12 @@ public interface JSLStringUtils {
      * @return the char
      */
     Map<Long, List<Character>> mostAppearedCharacter(String string);
+
+    /**
+     * Sort strings by length list.
+     *
+     * @param strings the strings
+     * @return the list
+     */
+    List<String> sortStringsByLength(List<String> strings);
 }

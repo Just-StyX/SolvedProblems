@@ -3,6 +3,7 @@ package jsl.groups.strings;
 import jsl.groups.strings.utils.JSLStringUtils;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -93,6 +94,12 @@ public class JSLStringUtilsImplementation implements JSLStringUtils {
             }
         }
         return Map.of(getKeyValue, characterList);
+    }
+
+    @Override
+    public List<String> sortStringsByLength(List<String> strings) {
+        Function<String, Integer> function = String::length;
+        return strings.stream().sorted(Comparator.comparing(function)).toList();
     }
 
     /**

@@ -20,7 +20,9 @@ public class JSLStringUtilsImplementationTests {
                 () -> assertFalse(stringUtilsImplementation.containsOnlyDigits("")),
                 () -> assertThat(0).isEqualTo(stringUtilsImplementation.occurrenceOfCharacter(')', "")),
                 () -> assertThat(3).isEqualTo(stringUtilsImplementation.occurrenceOfCharacter('m', "my mum")),
-                () -> assertThat(Map.of(4L, List.of('s', 'i'))).isEqualTo(stringUtilsImplementation.mostAppearedCharacter("mississippi"))
+                () -> assertThat(Map.of(4L, List.of('s', 'i'))).isEqualTo(stringUtilsImplementation.mostAppearedCharacter("mississippi")),
+                () -> assertThat(List.of("new york", "mississippi", "california san frans"))
+                        .isEqualTo(stringUtilsImplementation.sortStringsByLength(List.of("mississippi", "new york", "california san frans")))
         );
     }
 }
