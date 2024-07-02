@@ -4,6 +4,8 @@ import jsl.groups.strings.utils.JSLStringUtils;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -102,6 +104,37 @@ public class JSLStringUtilsImplementation implements JSLStringUtils {
         return strings.stream().sorted(Comparator.comparing(function)).toList();
     }
 
+    @Override
+    public long numberOfTimeSubstringOccur(String string, String substring) {
+        return numberOfTimeSubstringOccur(string, substring, 0);
+    }
+
+    @Override
+    public boolean isASequenceOfSubstring(String string) {
+        return isASequenceOfSubstring(string, "", 0);
+    }
+
+    /**
+     * Alternate solution number of time substring occur long.
+     * This is a fascinating solution. Check it out.
+     *
+     * @param string    the string
+     * @param substring the substring
+     * @return the long
+     */
+    public long alternateSolutionNumberOfTimeSubstringOccur(String string, String substring) {
+        Pattern pattern = Pattern.compile(Pattern.quote(substring));
+        Matcher matcher = pattern.matcher(string);
+
+        int pos = 0; long count = 0;
+
+        while (matcher.find(pos)) {
+            pos = matcher.start() + 1;
+            count++;
+        }
+        return count;
+    }
+
     /**
      * Reverse letters string.
      *
@@ -117,5 +150,41 @@ public class JSLStringUtilsImplementation implements JSLStringUtils {
 
     public String removeWhiteSpaces(String string) {
         return string.replaceAll("\\s", "");
+    }
+
+    /**
+     * Number of time substring occur long. A helper function
+     *
+     * @param string    the string
+     * @param substring the substring
+     * @param result    the result
+     * @return the number of occurrence of the substring
+     */
+    public long numberOfTimeSubstringOccur(String string, String substring, long result) {
+        if (!string.contains(substring)) return result;
+        else {
+            result++;
+            return numberOfTimeSubstringOccur(string.replaceFirst(substring, ""), substring, result);
+        }
+    }
+
+    /**
+     * Is a sequence of substring boolean. A helper function
+     *
+     * @param string    the string
+     * @param substring the substring
+     * @param count     the count
+     * @return the boolean
+     */
+    public boolean isASequenceOfSubstring(String string, String substring, int count) {
+        if (string.replaceAll(substring, "").isEmpty() || string.length() == 1 ) return true;
+        else {
+            if (count >= string.length() / 2) return false;
+            else {
+                substring += string.charAt(count);
+                count++;
+                return isASequenceOfSubstring(string, substring, count);
+            }
+        }
     }
 }

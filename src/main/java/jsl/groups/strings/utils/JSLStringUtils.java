@@ -81,4 +81,21 @@ public interface JSLStringUtils {
      * @return the list
      */
     List<String> sortStringsByLength(List<String> strings);
+
+    /**
+     * Number of time substring occur long.
+     *
+     * @param string    the string
+     * @param substring the substring
+     * @return the long
+     */
+    long numberOfTimeSubstringOccur(String string, String substring);
+
+    /**
+     * Is a sequence of substring boolean.
+     *
+     * @param string the string
+     * @return the boolean
+     */
+    boolean isASequenceOfSubstring(String string);
 }
