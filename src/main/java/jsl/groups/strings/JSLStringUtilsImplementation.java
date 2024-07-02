@@ -114,6 +114,11 @@ public class JSLStringUtilsImplementation implements JSLStringUtils {
         return isASequenceOfSubstring(string, "", 0);
     }
 
+    @Override
+    public String longestSubstringInSequence(String string) {
+        return string.substring(0, longestSubstringInSequence(string, "", 0));
+    }
+
     /**
      * Alternate solution number of time substring occur long.
      * This is a fascinating solution. Check it out.
@@ -184,6 +189,19 @@ public class JSLStringUtilsImplementation implements JSLStringUtils {
                 substring += string.charAt(count);
                 count++;
                 return isASequenceOfSubstring(string, substring, count);
+            }
+        }
+    }
+
+    public int longestSubstringInSequence(String string, String substring, int count) {
+        if (string.length() == 1) return 1;
+        if (string.replaceAll(substring, "").isEmpty() ) return count;
+        else {
+            if (count >= string.length() / 2) return 0;
+            else {
+                substring += string.charAt(count);
+                count++;
+                return longestSubstringInSequence(string, substring, count);
             }
         }
     }

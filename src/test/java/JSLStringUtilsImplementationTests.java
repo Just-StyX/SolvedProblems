@@ -27,7 +27,8 @@ public class JSLStringUtilsImplementationTests {
                 () -> assertTrue(stringUtilsImplementation.isASequenceOfSubstring("x")),
                 () -> assertFalse(stringUtilsImplementation.isASequenceOfSubstring("ab")),
                 () -> assertTrue(stringUtilsImplementation.isASequenceOfSubstring("xyz-xyz-")),
-                () -> assertFalse(stringUtilsImplementation.isASequenceOfSubstring("xyz-xyz-xyz"))
+                () -> assertFalse(stringUtilsImplementation.isASequenceOfSubstring("xyz-xyz-xyz")),
+                () -> assertEquals(stringUtilsImplementation.longestSubstringInSequence("xyz-xyz-"), "xyz-")
         );
     }
 }

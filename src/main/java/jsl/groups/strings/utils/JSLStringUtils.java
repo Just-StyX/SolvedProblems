@@ -98,4 +98,12 @@ public interface JSLStringUtils {
      * @return the boolean
      */
     boolean isASequenceOfSubstring(String string);
+
+    /**
+     * Longest substring string.
+     *
+     * @param string the string
+     * @return the string
+     */
+    String longestSubstringInSequence(String string);
 }
