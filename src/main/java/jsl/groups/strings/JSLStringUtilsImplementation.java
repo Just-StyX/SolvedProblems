@@ -2,10 +2,7 @@ package jsl.groups.strings;
 
 import jsl.groups.strings.utils.JSLStringUtils;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -72,6 +69,30 @@ public class JSLStringUtilsImplementation implements JSLStringUtils {
                         c -> String.valueOf(Character.valueOf((char) c))
                 ).collect(Collectors.groupingBy(c -> c, LinkedHashMap::new, Collectors.counting()));
         return result.getOrDefault(String.valueOf(ch), 0L);
+    }
+
+    @Override
+    public Map<Long, List<Character>> mostAppearedCharacter(String string) {
+        List<Character> characterList = new ArrayList<>();
+        var key = string.codePoints()
+                .mapToObj(c -> String.valueOf(Character.valueOf((char) c)))
+                .collect(Collectors.groupingBy(c -> c, Collectors.counting()))
+                .entrySet()
+                .stream().max(Map.Entry.comparingByValue(Comparator.naturalOrder()));
+
+        long getKeyValue = 0;
+
+        if (key.isPresent()) {
+            var sorted = string.codePoints()
+                    .mapToObj(c -> String.valueOf(Character.valueOf((char) c)))
+                    .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+
+            getKeyValue = key.get().getValue();
+            for (String str: sorted.keySet()) {
+                if (Objects.equals(getKeyValue, sorted.get(str))) characterList.add(str.charAt(0));
+            }
+        }
+        return Map.of(getKeyValue, characterList);
     }
 
     /**

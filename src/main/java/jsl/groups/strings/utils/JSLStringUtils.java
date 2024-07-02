@@ -1,5 +1,6 @@
 package jsl.groups.strings.utils;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -64,4 +65,12 @@ public interface JSLStringUtils {
      * @return the occurrence of the character in the sentence
      */
     long occurrenceOfCharacter(char ch, String string);
+
+    /**
+     * Most appeared character char.
+     *
+     * @param string the string
+     * @return the char
+     */
+    Map<Long, List<Character>> mostAppearedCharacter(String string);
 }

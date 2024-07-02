@@ -1,6 +1,9 @@
 import jsl.groups.strings.JSLStringUtilsImplementation;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -16,7 +19,8 @@ public class JSLStringUtilsImplementationTests {
                 () -> assertThat("diego san to mississippi").isEqualTo(stringUtilsImplementation.reverseSentence("mississippi to san diego")),
                 () -> assertFalse(stringUtilsImplementation.containsOnlyDigits("")),
                 () -> assertThat(0).isEqualTo(stringUtilsImplementation.occurrenceOfCharacter(')', "")),
-                () -> assertThat(3).isEqualTo(stringUtilsImplementation.occurrenceOfCharacter('m', "my mum"))
+                () -> assertThat(3).isEqualTo(stringUtilsImplementation.occurrenceOfCharacter('m', "my mum")),
+                () -> assertThat(Map.of(4L, List.of('s', 'i'))).isEqualTo(stringUtilsImplementation.mostAppearedCharacter("mississippi"))
         );
     }
 }
